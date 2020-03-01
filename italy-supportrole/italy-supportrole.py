@@ -1,7 +1,6 @@
-import discord
-from discord.utils import get
-from discord.ext import commands
+from discord import Embed, Guild, Member, Role
 from discord.ext.commands import Bot, Cog, Context, Greedy, group
+from discord.utils import get
 
 class SupportRoleManagent(commands.Cog):
 
@@ -11,7 +10,7 @@ class SupportRoleManagent(commands.Cog):
 
     @commands.command()
     @commands.has_any_role(659513332218331155, 676408167063879715)
-    async def givesupport(ctx, user: discord.Member):
+    async def givesupport(self, ctx: Context, user: discord.Member):
         role = get(user.guild.roles, id=683333884871573534)
         await ctx.send("its gone?")
         await user.add_roles(role)
@@ -19,7 +18,7 @@ class SupportRoleManagent(commands.Cog):
 
     @commands.command()
     @commands.has_any_role(659513332218331155, 676408167063879715)
-    async def removesupport(ctx, user: discord.Member):
+    async def removesupport(self, ctx: Context, user: discord.Member):
         role = get(user.guild.roles, id=683333884871573534)
         await ctx.send("nah")
         await user.remove_roles(role)
