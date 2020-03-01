@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 
-
 class SupportRoleManagent(commands.Cog):
 
     def __init__(self, bot):
@@ -21,6 +20,7 @@ class SupportRoleManagent(commands.Cog):
         role = get(guild.roles, id=683333884871573534)
         await user.remove_roles(role)
         await await ctx.send(f"hey {ctx.author.name}, {user.name} has been remove of a role called: {role.name}")
+
 
 def setup(bot):
     bot.add_cog(SupportRoleManagent(bot))
