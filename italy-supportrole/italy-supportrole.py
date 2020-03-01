@@ -7,14 +7,14 @@ class SupportRoleManagent(commands.Cog):
         self.bot = bot
         self.db = bot.plugin_db.get_partition(self)
 
-    @bot.command(pass_context=True)
+    @commands.command(pass_context=True)
     @commands.has_any_role(659513332218331155, 676408167063879715)
     async def givesupport(ctx, user: discord.Member):
         role = get(guild.roles, id=683333884871573534)
         await user.add_roles(role)
         await ctx.send(f"hey {ctx.author.name}, {user.name} has been giving a role called: {role.name}")
 
-    @bot.command(pass_context=True)
+    @commands.command(pass_context=True)
     @commands.has_any_role(659513332218331155, 676408167063879715)
     async def removesupport(ctx, user: discord.Member):
         role = get(guild.roles, id=683333884871573534)
