@@ -19,17 +19,21 @@ class SupportRoleManagent(commands.Cog):
     @commands.has_any_role(659513332218331155, 676408167063879715)
     async def givesupport(self, ctx: Context, user: discord.Member):
         role = get(user.guild.roles, id=683333884871573534)
-        await user.add_roles(role)
-        await ctx.send(f"hey {ctx.author.name}, {user.name} has been giving <@&{role.id}> role")
+        if role in user.roles:
+            await ctx.send(f"hey {ctx.author.name}, {user.name} already have the <@&{role.id}> role")
+        else:
+            await user.add_roles(role)
+            await ctx.send(f"hey {ctx.author.name}, {user.name} has been giving <@&{role.id}> role")
 
     @supportrole.command(name="remove")
     @commands.has_any_role(659513332218331155, 676408167063879715)
     async def removesupport(self, ctx: Context, user: discord.Member):
         role = get(user.guild.roles, id=683333884871573534)
-        await user.remove_roles(role)
-        await ctx.send(f"hey {ctx.author.name}, {user.name} has been remove <@&{role.id}> role")
-
-
+        if role in user.roles:
+            await user.remove_roles(role)
+            await ctx.send(f"hey {ctx.author.name}, {user.name} has been remove <@&{role.id}> role")
+        else:
+            await ctx.send(f"hey {ctx.author.name}, {user.name} not have the <@&{role.id}> role")
 
 def setup(bot):
     bot.add_cog(SupportRoleManagent(bot))
