@@ -1,4 +1,6 @@
+import discord
 from discord import Embed, Guild, Member, Role
+from discord.ext import commands
 from discord.ext.commands import Bot, Cog, Context, Greedy, group
 from discord.utils import get
 
