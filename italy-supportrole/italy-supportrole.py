@@ -12,7 +12,7 @@ class SupportRoleManagent(commands.Cog):
 
     @group(name="supportrole", invoke_without_command=True)
     @commands.has_any_role(659513332218331155, 676408167063879715)
-    async def autorole(self, ctx: Context) -> None:
+    async def supportrole(self, ctx: Context) -> None:
         await ctx.send_help(ctx.command)
 
     @supportrole.command(name="give")
